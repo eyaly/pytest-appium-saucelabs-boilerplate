@@ -62,7 +62,7 @@ def driver(request, platform):
         if not os.getenv(var):
             pytest.fail(f"{var} is not set (see .env.example)")
 
-    options = OPTIONS_BY_PLATFORM[platform](request.node.name)
+    options = OPTIONS_BY_PLATFORM[platform](request.node.originalname)
     drv = webdriver.Remote(sauce_url(), options=options)
     drv.implicitly_wait(0)
 
